@@ -1,0 +1,53 @@
+{
+  "config": {
+    "flow_title": "{name}",
+    "step": {
+      "user": {
+        "title": "Add an OOLY controller",
+        "description": "Enter the controller's IP address or hostname. Reserve a static IP on your router (DHCP reservation) so it does not change.",
+        "data": {
+          "host": "IP address or hostname"
+        }
+      },
+      "pick_type": {
+        "title": "OOLY controller type",
+        "description": "Choose how this controller is used. This is your choice, not the device's wiring — a 5-channel controller can still be used as tunable white only. You can change it later via Reconfigure.",
+        "data": {
+          "device_type": "Controller type"
+        }
+      },
+      "zeroconf_confirm": {
+        "title": "Add an OOLY controller",
+        "description": "Discovered \"{name}\" at {host}. Choose the controller type and add it.",
+        "data": {
+          "device_type": "Controller type"
+        }
+      },
+      "reconfigure": {
+        "title": "OOLY controller settings",
+        "description": "Change the controller type and how often Home Assistant polls it for external changes.",
+        "data": {
+          "device_type": "Controller type",
+          "scan_interval": "Polling interval (seconds)"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Could not reach the controller. Check the IP/hostname and that the device is online."
+    },
+    "abort": {
+      "already_configured": "This controller is already configured.",
+      "cannot_connect": "Could not reach the discovered controller.",
+      "reconfigure_successful": "Controller type updated."
+    }
+  },
+  "selector": {
+    "device_type": {
+      "options": {
+        "ct": "Tunable white (CCT)",
+        "rgb": "Colour (RGB)",
+        "rgb_cct": "Colour + tunable white (RGB + CCT)"
+      }
+    }
+  }
+}

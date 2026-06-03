@@ -1,0 +1,10 @@
+# Test + lint dependencies.
+#   python -m venv .venv && . .venv/bin/activate
+#   pip install -r requirements_test.txt
+#   pytest          # run the test suite
+#   ruff check .    # lint
+#
+# pytest-homeassistant-custom-component pins a matching `homeassistant` version, which is
+# what the tests load the integration against.
+pytest-homeassistant-custom-component
+ruff
