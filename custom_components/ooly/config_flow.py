@@ -3,8 +3,8 @@
 Two entry paths, both identifying the device by its MAC (stable unique_id) so a
 manually-added device is recognised as the same one when discovered, and vice versa:
   - manual: user types an IP / hostname.
-  - zeroconf: devices advertise mDNS `_http._tcp` with an instance name like
-    `ooly-55f4` (filtered by `name: "ooly*"` in manifest.json).
+  - zeroconf: devices advertise the dedicated mDNS service `_ooly._tcp` with an
+    instance name like `ooly-55f4` (matched by `type` in manifest.json).
 
 After the device answers, the user picks the controller TYPE (tunable white / colour /
 colour+white). This is an intent choice, not auto-detected from wiring, and can be
@@ -157,7 +157,7 @@ class OolyConfigFlow(ConfigFlow, domain=DOMAIN):
     async def async_step_zeroconf(
         self, discovery_info: ZeroconfServiceInfo
     ) -> ConfigFlowResult:
-        """Handle a device discovered via mDNS (`ooly-*._http._tcp.local.`)."""
+        """Handle a device discovered via mDNS (`ooly-*._ooly._tcp.local.`)."""
         host = str(discovery_info.ip_address)
         client = OolyClient(host, async_get_clientsession(self.hass))
         try:

@@ -87,8 +87,10 @@ it provides the corresponding control only.
 - **Address changes.** A reserved address avoids this. Otherwise the stored address is
   updated on the next discovery, or the controller can be re‑added — it is matched by MAC,
   so no duplicate is created.
-- **Discovery after renaming.** Discovery matches mDNS names beginning with `ooly`. A
-  controller renamed away from that prefix must be added manually by IP.
+- **Discovery.** Controllers are discovered by their dedicated `_ooly._tcp` mDNS service,
+  independent of the device name, so renaming a controller does not affect it. If a
+  controller is not discovered (for example, mDNS is blocked across subnets/VLANs), add it
+  manually by IP.
 - **Incorrect control shown.** Set the correct controller type via the reconfigure flow.
 
 ## Development
